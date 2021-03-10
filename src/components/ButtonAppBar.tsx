@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       display: "flex",
       justifyContent: "center",
+      [theme.breakpoints.down("xs")]: {
+        width: "800px",
+      },
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -18,6 +21,10 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 900,
       fontSize: "30px",
     },
+    mob: {
+      width: "100%",
+      height: "14vh",
+    },
   })
 );
 
@@ -26,9 +33,15 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="default" className={classes.mob}>
         <Toolbar>
-          <img src={logo} style={{ width: "200px" }} alt="" />
+          <a href="/index.html">
+            <img
+              src={logo}
+              style={{ width: "200px", marginLeft: "266px", marginTop: "13px" }}
+              alt=""
+            />
+          </a>
         </Toolbar>
       </AppBar>
     </div>

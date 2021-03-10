@@ -6,6 +6,8 @@ import EditableSelect from "./EditableSelect";
 import EditableTextarea from "./EditableTextarea";
 import EditableCalendarInput from "./EditableCalendarInput";
 import countryList from "../data/countryList";
+import stateList from "../data/stateList";
+import cityList from "../data/cityList";
 import Document from "./Document";
 import Page from "./Page";
 import View from "./View";
@@ -142,7 +144,6 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
     <Document pdfMode={pdfMode}>
       <Page className="invoice-wrapper" pdfMode={pdfMode}>
         {!pdfMode && <Download data={invoice} />}
-
         <View className="flex" pdfMode={pdfMode}>
           <View className="w-50" pdfMode={pdfMode}>
             <EditableInput
@@ -164,14 +165,14 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               onChange={(value) => handleChange("companyAddress", value)}
               pdfMode={pdfMode}
             />
-            <EditableInput
-              placeholder="City"
-              value={invoice.companyAddress2}
-              onChange={(value) => handleChange("companyAddress2", value)}
+            <EditableSelect
+              options={cityList}
+              value={invoice.companyAddress3}
+              onChange={(value) => handleChange("companyAddress3", value)}
               pdfMode={pdfMode}
             />
-            <EditableInput
-              placeholder="State"
+            <EditableSelect
+              options={stateList}
               value={invoice.companyAddress2}
               onChange={(value) => handleChange("companyAddress2", value)}
               pdfMode={pdfMode}
@@ -214,14 +215,15 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               onChange={(value) => handleChange("clientAddress", value)}
               pdfMode={pdfMode}
             />
-            <EditableInput
-              placeholder="City"
-              value={invoice.clientAddress2}
-              onChange={(value) => handleChange("clientAddress2", value)}
+            <EditableSelect
+              options={cityList}
+              value={invoice.clientAddress3}
+              onChange={(value) => handleChange("clientAddress3", value)}
               pdfMode={pdfMode}
             />
-            <EditableInput
-              placeholder="State"
+
+            <EditableSelect
+              options={stateList}
               value={invoice.clientAddress2}
               onChange={(value) => handleChange("clientAddress2", value)}
               pdfMode={pdfMode}
@@ -307,7 +309,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           </View>
         </View>
 
-        <View className="mt-30 bg-dark flex" pdfMode={pdfMode}>
+        <View className="mt-30 bg-primary flex" pdfMode={pdfMode}>
           <View className="w-48 p-4-8" pdfMode={pdfMode}>
             <EditableInput
               className="white bold"
